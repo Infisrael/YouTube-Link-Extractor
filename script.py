@@ -14,4 +14,6 @@ matches = re.findall(pattern, text)
 with open('output.txt', 'w') as output_file:
     for match in matches:
         video_url = f'https://www.youtube.com/watch?v={match}'
-        output_file.write(video_url + '\n')
+        if match not in unique_video_ids:
+            unique_video_ids.add(match)
+            output_file.write(video_url + '\n')
